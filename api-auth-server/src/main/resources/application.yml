@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: api-auth-server
+  security:
+    user:
+      password: teste
+# swagger-ui custom path
+springdoc:
+  show-actuator: true
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    path: /api-docs
+
+# Actuator
+management:
+  server:
+    port: 9001
+  endpoints:
+    web:
+      exposure:
+        include: "*"
