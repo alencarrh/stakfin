@@ -1,4 +1,4 @@
-package com.arh.studies.sqslistener.configuration
+package com.arh.studies.apiauthserver.configuration
 
 import io.swagger.v3.oas.annotations.Hidden
 import org.springframework.context.annotation.Configuration
@@ -10,5 +10,10 @@ import org.springframework.web.servlet.view.RedirectView
 @RestController
 class SwaggerConfiguration {
 
-  @GetMapping("/") @Hidden fun swagger(): RedirectView = RedirectView("/swagger-ui")
+  private val SWAGGER_UI = "/swagger/swagger-ui/index.html"
+
+  @GetMapping("/")
+  @Hidden
+  fun swagger(): RedirectView = RedirectView(SWAGGER_UI)
+
 }

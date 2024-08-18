@@ -1,56 +1,48 @@
 package com.arh.studies.apiauthserver.configuration
 
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.security.config.Customizer.withDefaults
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.core.userdetails.User
-import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.security.provisioning.InMemoryUserDetailsManager
 import org.springframework.security.web.SecurityFilterChain
+import javax.sql.DataSource
+
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfiguration {
+@EnableMethodSecurity
+class SecurityConfiguration(private val dataSource: DataSource) {
 
-    @Bean
-    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
-        return http
-            .authorizeHttpRequests {
-                it.requestMatchers("/public/**").permitAll()
-                it.requestMatchers("/swagger-ui**").permitAll()
-                it.requestMatchers("/api-docs").permitAll()
-                it.requestMatchers("/user/**").hasRole("USER")
-                it.requestMatchers("/admin/**").hasRole("ADMIN")
-                it.anyRequest().authenticated()
-            }
-            .formLogin { it.permitAll() }
-            .build()
-    }
+  @Bean
+  fun securityFilterChainConfiguration(http: HttpSecurity): SecurityFilterChain {
+    return http.authorizeHttpRequests {
+      //swagger
+      it.requestMatchers("/", "/swagger/**").permitAll()
 
-    @Bean
-    fun userDetailsService(): UserDetailsService {
-        val user =
-            User.builder()
-                .username("myuser")
-                .password("\$2a\$14\$fkbFNyxo6ztPp1nKgk0tVOCoWlPPtWUOEX.fRXWlplfbIxoIsiw/i")
-                .roles("USER")
-                .build()
+      // secure endpoints
+      it.requestMatchers("/api/**").authenticated()
+      it.requestMatchers("/api/user/**").hasRole("USER")
+      it.requestMatchers("/api/admin/**").hasRole("ADMIN")
+      it.anyRequest().authenticated()
 
-        val admin =
-            User.builder()
-                .username("myadmin")
-                .password("\$2a\$14\$aws/HNYU8AAdqissQdoC6e91YP9ARBB1C7rKRqmEo8hHCfFnaqMSS")
-                .roles("USER", "ADMIN")
-                .build()
+      }.formLogin { it.disable() }.httpBasic(withDefaults()).build()
+  }
 
-        return InMemoryUserDetailsManager(user, admin)
-    }
+  @Bean
+  fun passwordEncoder(): PasswordEncoder {
+    return BCryptPasswordEncoder()
+  }
 
-    @Bean
-    fun PasswordEncoder(): PasswordEncoder {
-        return BCryptPasswordEncoder()
-    }
+  @Autowired
+  @Throws(Exception::class)
+  fun configureGlobal(auth: AuthenticationManagerBuilder) {
+    auth.jdbcAuthentication().dataSource(dataSource)
+  }
 }
