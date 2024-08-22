@@ -12,8 +12,5 @@ class SwaggerConfiguration {
 
   private val SWAGGER_UI = "/swagger/swagger-ui/index.html"
 
-  @GetMapping("/")
-  @Hidden
-  fun swagger(): RedirectView = RedirectView(SWAGGER_UI)
-
+  @GetMapping("/") @Hidden fun swagger(): RedirectView = RedirectView(SWAGGER_UI)
 }

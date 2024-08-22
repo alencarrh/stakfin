@@ -20,6 +20,10 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
 
+
+
+
+
 # swagger-ui custom path
 springdoc:
   show-actuator: true
@@ -36,3 +40,6 @@ management:
     web:
       exposure:
         include: "*"
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
