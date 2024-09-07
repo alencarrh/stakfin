@@ -1,6 +1,5 @@
 package com.arh.ordersystem.orderapi.service
 
-import com.arh.ordersystem.orderapi.model.Status
 import com.arh.ordersystem.orderapi.persistence.order.entity.OrderEntity
 import com.arh.ordersystem.orderapi.persistence.order.entity.order.BuyerEntity
 import com.arh.ordersystem.orderapi.persistence.order.entity.order.PaymentDetailEntity

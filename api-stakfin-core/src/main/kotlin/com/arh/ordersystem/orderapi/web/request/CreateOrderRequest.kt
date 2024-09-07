@@ -1,6 +1,5 @@
 package com.arh.ordersystem.orderapi.web.request
 
-import com.arh.ordersystem.orderapi.model.PaymentMethod
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Min
 import jakarta.validation.constraints.NotBlank
