@@ -7,11 +7,11 @@ logging:
 
 spring:
   application:
-    name: order-api
+    name: api-stakfin-core
   datasource:
-    url: jdbc:postgresql://localhost:5432/order_db
-    username: order_user
-    password: order
+    url: jdbc:postgresql://localhost:5432/stakfin_db
+    username: stakfin_user
+    password: stakfin
   jpa:
     hibernate:
       ddl-auto: none
