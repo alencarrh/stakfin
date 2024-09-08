@@ -6,10 +6,10 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import java.time.LocalDate
 
-data class RendaVariavelTransacaoRequest(
+data class TransacaoRendaVariavelRequest(
   @field:NotNull val acao: AcaoTransacao,
   @field:NotBlank val ticker: String,
-  @field:NotNull val dataCompra: LocalDate,
+  @field:NotNull val data: LocalDate,
   @field:NotNull @field:Min(1) val quantidade: Int,
   @field:NotNull @field:Min(1) val valorUnitario: Long,
 )

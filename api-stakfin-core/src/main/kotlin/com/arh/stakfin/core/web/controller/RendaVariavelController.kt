@@ -1,6 +1,6 @@
 package com.arh.stakfin.core.web.controller
 
-import com.arh.stakfin.core.web.request.RendaVariavelTransacaoRequest
+import com.arh.stakfin.core.web.request.TransacaoRendaVariavelRequest
 import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.PostMapping
@@ -15,7 +15,7 @@ class RendaVariavelController() {
   private val logger = KotlinLogging.logger {}
 
   @PostMapping
-  fun cadastrarRendaVariavel(@Valid @RequestBody request: RendaVariavelTransacaoRequest) {
+  fun cadastrarRendaVariavel(@Valid @RequestBody request: TransacaoRendaVariavelRequest) {
     logger.info { "criar renda variavel $request" }
   }
 

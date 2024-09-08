@@ -1,6 +1,6 @@
 package com.arh.stakfin.core.web.controller
 
-import com.arh.stakfin.core.web.request.RendaFixaTransacaoRequest
+import com.arh.stakfin.core.web.request.CadastrarRendaFixaRequest
 import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.PostMapping
@@ -15,7 +15,7 @@ class RendaFixaController() {
   private val logger = KotlinLogging.logger {}
 
   @PostMapping
-  fun cadastrarRendaFixa(@Valid @RequestBody request: RendaFixaTransacaoRequest) {
+  fun cadastrarRendaFixa(@Valid @RequestBody request: CadastrarRendaFixaRequest) {
     logger.info { "criar renda fixa $request" }
   }
 

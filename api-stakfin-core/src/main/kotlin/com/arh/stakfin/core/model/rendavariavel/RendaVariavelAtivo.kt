@@ -4,7 +4,7 @@ import java.time.LocalDate
 
 data class RendaVariavelAtivo(
   val id: Long,
-  val ticker: String,
+  val ticker: String, //atualizar para Ticker
   val dataCompra: LocalDate,
   val quantidade: Int,
   val valorUnitario: Long,

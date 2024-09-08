@@ -22,6 +22,7 @@ data class RendaFixaAtivo(
   // dados em uma possível venda ou vencimento
   val dataVenda: LocalDate,
   val valorLiquidado: Long,
+  //impostos/taxas
 )
 
 // para calcular rentabilidade,
