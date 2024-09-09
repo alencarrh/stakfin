@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 import java.time.LocalDate
 
-data class TransacaoRendaVariavelRequest(
+data class CadastrarRendaVariavelRequest(
   @field:NotNull val acao: AcaoTransacao,
   @field:NotBlank val ticker: String,
   @field:NotNull val data: LocalDate,

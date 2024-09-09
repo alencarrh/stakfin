@@ -1,6 +1,7 @@
 package com.arh.stakfin.core.service
 
 import com.arh.stakfin.core.mapper.RendaFixaMapper
+import com.arh.stakfin.core.model.rendafixa.RendaFixaAtivo
 import com.arh.stakfin.core.persistence.rendafixa.repository.RendaFixaRepository
 import com.arh.stakfin.core.web.request.CadastrarRendaFixaRequest
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -16,13 +17,14 @@ class CadastrarRendaFixaService(
 
   private val logger = KotlinLogging.logger {}
 
-  fun cadastrarRendaFixa(request: CadastrarRendaFixaRequest) {
+  fun cadastrar(request: CadastrarRendaFixaRequest): RendaFixaAtivo {
+    //TODO deveria converter de request para entity diretamente? faz sentido?
+    // com certeza seria mais otimizado
+
     val rendaFixa = rendaFixaMapper.toModel(request)
+    val entity = rendaFixaMapper.toEntity(rendaFixa)
+    val rendaFixaSaved = rendaFixaRepository.save(entity)
 
-
-
-
-
-    logger.info { "cadastrar renda fixa $rendaFixa" }
+    return rendaFixaMapper.toModel(rendaFixaSaved);
   }
 }

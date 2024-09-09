@@ -31,7 +31,7 @@
         <kotlin.version>1.9.25</kotlin.version>
         <kotlin-logging.version>6.0.9</kotlin-logging.version>
         <mapstruct.version>1.6.0</mapstruct.version>
-        <mapstruct.plugin.version>3.8.1</mapstruct.plugin.version>
+        <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <spotless.version>2.43.0</spotless.version>
         <springdoc.version>2.5.0</springdoc.version>
     </properties>
@@ -157,7 +157,6 @@
                         <plugin>jpa</plugin>
                     </compilerPlugins>
                 </configuration>
-
                 <dependencies>
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
@@ -171,6 +170,7 @@
                     </dependency>
                 </dependencies>
                 <executions>
+                    <!-- Annotation Processing (kapt) -->
                     <execution>
                         <id>kapt</id>
                         <goals>
@@ -208,7 +208,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${mapstruct.plugin.version}</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <source>21</source>
                     <target>21</target>
@@ -219,7 +219,8 @@
                             <version>${mapstruct.version}</version>
                         </path>
                     </annotationProcessorPaths>
-<!--                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/kapt</generatedSourcesDirectory>-->
+                    <generatedSourcesDirectory>${project.build.directory}/generated-sources/kapt
+                    </generatedSourcesDirectory>
                 </configuration>
                 <executions>
                     <execution>

@@ -13,7 +13,7 @@ import java.time.LocalDate
 @Table(name = "renda_fixa_ativo")
 data class RendaFixaAtivoEntity(
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  val id: Long = 0,
+  val id: Long?,
   val emissor: String,
   val tipo: RendaFixaTipo,
   val indexador: RendaFixaIndexador,
@@ -21,4 +21,6 @@ data class RendaFixaAtivoEntity(
   val dataCompra: LocalDate,
   val dataVencimento: LocalDate,
   val valorInvestido: Long,
+  val dataVenda: LocalDate?,
+  val valorLiquidado: Long?,
 )

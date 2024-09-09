@@ -10,7 +10,7 @@ import java.time.LocalDate
 data class RendaFixaAtivo(
 
   // dados na hora da compra
-  val id: String,
+  val id: Long?,
   val emissor: String,
   val tipo: RendaFixaTipo,
   val indexador: RendaFixaIndexador,
@@ -20,8 +20,8 @@ data class RendaFixaAtivo(
   val valorInvestido: Long,
 
   // dados em uma possível venda ou vencimento
-  val dataVenda: LocalDate,
-  val valorLiquidado: Long,
+  val dataVenda: LocalDate?,
+  val valorLiquidado: Long?,
   //impostos/taxas
 )
 
