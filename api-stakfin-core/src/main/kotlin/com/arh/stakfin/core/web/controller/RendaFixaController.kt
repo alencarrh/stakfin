@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/v1/ativos/rendafixa")
 class RendaFixaController(
-  private val rendaFixaService: RendaFixaService,
-  private val cadastrarRendaFixaService: CadastrarRendaFixaService
+    private val rendaFixaService: RendaFixaService,
+    private val cadastrarRendaFixaService: CadastrarRendaFixaService
 ) {
 
   private val logger = KotlinLogging.logger {}
@@ -33,6 +33,4 @@ class RendaFixaController(
     logger.info { "criar renda fixa $id" }
     return rendaFixaService.findById(id)
   }
-
-
 }

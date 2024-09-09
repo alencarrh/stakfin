@@ -18,5 +18,4 @@ class RendaVariavelController() {
   fun cadastrarRendaVariavel(@Valid @RequestBody request: CadastrarRendaVariavelRequest) {
     logger.info { "criar renda variavel $request" }
   }
-
 }

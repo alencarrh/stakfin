@@ -11,20 +11,20 @@ import org.springframework.stereotype.Service
 @Service
 @Component
 class CadastrarRendaFixaService(
-  private val rendaFixaRepository: RendaFixaRepository,
-  private val rendaFixaMapper: RendaFixaMapper
+    private val rendaFixaRepository: RendaFixaRepository,
+    private val rendaFixaMapper: RendaFixaMapper
 ) {
 
   private val logger = KotlinLogging.logger {}
 
   fun cadastrar(request: CadastrarRendaFixaRequest): RendaFixaAtivo {
-    //TODO deveria converter de request para entity diretamente? faz sentido?
+    // TODO deveria converter de request para entity diretamente? faz sentido?
     // com certeza seria mais otimizado
 
     val rendaFixa = rendaFixaMapper.toModel(request)
     val entity = rendaFixaMapper.toEntity(rendaFixa)
     val rendaFixaSaved = rendaFixaRepository.save(entity)
 
-    return rendaFixaMapper.toModel(rendaFixaSaved);
+    return rendaFixaMapper.toModel(rendaFixaSaved)
   }
 }

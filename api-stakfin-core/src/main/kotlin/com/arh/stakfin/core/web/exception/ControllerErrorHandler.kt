@@ -20,7 +20,8 @@ class ControllerErrorHandler {
   @ExceptionHandler(Exception::class)
   fun handleException(e: Exception): ErrorMessage {
     log.error { "Error: ${e.message} <> $e" }
-    return ErrorMessage(code = "INTERNAL_SERVER_ERROR", message = "An error occurred while processing the request")
+    return ErrorMessage(
+        code = "INTERNAL_SERVER_ERROR", message = "An error occurred while processing the request")
   }
 
   @ResponseBody
@@ -36,7 +37,7 @@ class ControllerErrorHandler {
   @ExceptionHandler(AbstractException::class)
   fun handleMethodArgumentNotValidException(e: AbstractException): ResponseEntity<ErrorMessage> {
     val errorMessage =
-      ErrorMessage(code = e.errorCode.code, message = e.errorCode.message, details = e.details)
+        ErrorMessage(code = e.errorCode.code, message = e.errorCode.message, details = e.details)
 
     return ResponseEntity(errorMessage, e.errorCode.httpStatus)
   }

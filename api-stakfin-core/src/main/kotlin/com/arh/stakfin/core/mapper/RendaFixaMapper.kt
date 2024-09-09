@@ -6,7 +6,6 @@ import com.arh.stakfin.core.web.request.CadastrarRendaFixaRequest
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
-
 @Mapper(componentModel = "spring")
 interface RendaFixaMapper {
 
