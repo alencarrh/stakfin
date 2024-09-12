@@ -1,4 +1,4 @@
-package com.arh.stakfin.core.service
+package com.arh.stakfin.core.service.rendafixa
 
 import com.arh.stakfin.core.mapper.RendaFixaMapper
 import com.arh.stakfin.core.model.rendafixa.RendaFixaAtivo
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component
 import org.springframework.stereotype.Service
 
 @Service
-@Component
 class CadastrarRendaFixaService(
     private val rendaFixaRepository: RendaFixaRepository,
     private val rendaFixaMapper: RendaFixaMapper

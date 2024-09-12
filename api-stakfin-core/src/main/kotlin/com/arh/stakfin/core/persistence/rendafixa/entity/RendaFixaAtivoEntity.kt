@@ -10,7 +10,7 @@ import jakarta.persistence.Table
 import java.time.LocalDate
 
 @Entity
-@Table(name = "renda_fixa_ativo")
+@Table(name = "renda_fixa")
 data class RendaFixaAtivoEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long?,
     val emissor: String,

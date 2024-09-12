@@ -6,4 +6,5 @@ enum class ErrorCode(val code: String, val message: String, val httpStatus: Http
 
   INTERNAL_SERVER_ERROR("IE01", "Internal server error", HttpStatus.INTERNAL_SERVER_ERROR),
   NOT_FOUND_RENDA_FIXA_ATIVO("RF_E0001", "Renda fixa ativo not found", HttpStatus.NOT_FOUND),
+  NOT_FOUND_TRANSACAO_RENDA_VARIAVEL("Rv_E0001", "Renda variável not found", HttpStatus.NOT_FOUND),
 }

@@ -1,4 +1,4 @@
-package com.arh.stakfin.core.service
+package com.arh.stakfin.core.service.rendafixa
 
 import com.arh.stakfin.core.mapper.RendaFixaMapper
 import com.arh.stakfin.core.model.exception.RendaFixaAtivoNotFoundException
