@@ -1,7 +1,7 @@
 package com.arh.stakfin.core.mapper
 
-import com.arh.stakfin.core.model.rendafixa.RendaFixaAtivo
-import com.arh.stakfin.core.persistence.rendafixa.entity.RendaFixaAtivoEntity
+import com.arh.stakfin.core.model.RendaFixaAtivo
+import com.arh.stakfin.core.persistence.entity.RendaFixaAtivoEntity
 import com.arh.stakfin.core.web.request.CadastrarRendaFixaRequest
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
@@ -10,11 +10,21 @@ import org.mapstruct.Mapping
 interface RendaFixaMapper {
 
   @Mapping(target = "id", ignore = true)
+  @Mapping(target = "createdAt", ignore = true)
   @Mapping(target = "dataVenda", ignore = true)
-  @Mapping(target = "valorLiquidado", ignore = true)
-  fun toModel(request: CadastrarRendaFixaRequest): RendaFixaAtivo
+  fun toNewEntity(model: RendaFixaAtivo): RendaFixaAtivoEntity
 
   fun toModel(entity: RendaFixaAtivoEntity): RendaFixaAtivo
 
-  fun toEntity(model: RendaFixaAtivo): RendaFixaAtivoEntity
+  @Mapping(target = "id", ignore = true)
+  @Mapping(target = "usuarioId", ignore = true)
+  @Mapping(target = "createdAt", ignore = true)
+  @Mapping(target = "dataVenda", ignore = true)
+  @Mapping(target = "quantidadeTotalVenda", ignore = true)
+  @Mapping(target = "valorTotalVenda", ignore = true)
+  @Mapping(target = "status", constant = "ATIVO")
+  @Mapping(source = "transacao.dataTransacao", target = "dataCompra")
+  @Mapping(source = "transacao.quantidade", target = "quantidadeCompra")
+  @Mapping(target = "valorCompra", expression = "java(request.getTransacao().getValorUnitario() * request.getTransacao().getQuantidade())")
+  fun toModel(request: CadastrarRendaFixaRequest): RendaFixaAtivo
 }

@@ -1,6 +1,7 @@
 package com.arh.stakfin.core.web.controller
 
-import com.arh.stakfin.core.model.rendafixa.RendaFixaAtivo
+
+import com.arh.stakfin.core.model.RendaFixaAtivo
 import com.arh.stakfin.core.service.rendafixa.CadastrarRendaFixaService
 import com.arh.stakfin.core.service.rendafixa.RendaFixaService
 import com.arh.stakfin.core.web.request.CadastrarRendaFixaRequest
