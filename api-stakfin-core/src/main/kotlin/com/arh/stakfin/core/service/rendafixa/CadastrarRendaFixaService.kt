@@ -1,7 +1,5 @@
 package com.arh.stakfin.core.service.rendafixa
 
-//import com.arh.stakfin.core.model.rendafixa.RendaFixaAtivo
-//import com.arh.stakfin.core.persistence.rendafixa.repository.RendaFixaRepository
 import com.arh.stakfin.core.mapper.RendaFixaMapper
 import com.arh.stakfin.core.model.RendaFixaAtivo
 import com.arh.stakfin.core.persistence.repository.RendaFixaAtivoRepository

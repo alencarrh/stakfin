@@ -12,6 +12,25 @@ create table usuario
     nome  varchar(100) not null
 );
 
+CREATE TABLE ticker
+(
+    ticker            VARCHAR(10) PRIMARY KEY,
+    nome              VARCHAR(100),
+    setor             VARCHAR(50),
+    segmento          VARCHAR(50),
+    ultimo_valor      bigint,
+    data_ultimo_valor DATE,
+    updated_at        TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ticker_history
+(
+    ticker VARCHAR(10),
+    data   DATE,
+    valor  bigint,
+    PRIMARY KEY (ticker, data),
+    FOREIGN KEY (ticker) REFERENCES ticker (ticker)
+);
 
 CREATE TABLE transacao
 (
@@ -67,22 +86,4 @@ CREATE TABLE ativo_rendavariavel
     FOREIGN KEY (usuario_id) REFERENCES usuario (id)
 );
 
-CREATE TABLE ticker
-(
-    ticker            VARCHAR(10) PRIMARY KEY,
-    nome              VARCHAR(100),
-    setor             VARCHAR(50),
-    segmento          VARCHAR(50),
-    ultimo_valor      bigint,
-    data_ultimo_valor DATE,
-    updated_at        TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
-CREATE TABLE ticker_history
-(
-    ticker VARCHAR(10),
-    data   DATE,
-    valor  bigint,
-    PRIMARY KEY (ticker, data),
-    FOREIGN KEY (ticker) REFERENCES ticker (id)
-);

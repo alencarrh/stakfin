@@ -21,5 +21,5 @@ data class RendaFixaAtivo(
   val valorCompra: Long,
   val quantidadeTotalVenda: Int?,
   val valorTotalVenda: Long?,
-  val createdAt: LocalDateTime
+  val createdAt: LocalDateTime?
 )

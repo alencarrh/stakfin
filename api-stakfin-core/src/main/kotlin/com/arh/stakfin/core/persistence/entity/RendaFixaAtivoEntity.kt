@@ -32,5 +32,5 @@ data class RendaFixaAtivoEntity(
   val quantidadeTotalVenda: Int?,
   val valorTotalVenda: Long?,
   @CreationTimestamp
-  val createdAt: LocalDateTime
+  val createdAt: LocalDateTime?
 )

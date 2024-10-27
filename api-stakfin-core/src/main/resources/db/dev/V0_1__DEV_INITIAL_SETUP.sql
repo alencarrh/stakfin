@@ -1,0 +1,1 @@
+INSERT INTO public.usuario (id, email, nome) VALUES (0, 'user@user.com', 'user')
