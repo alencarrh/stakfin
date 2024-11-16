@@ -6,14 +6,14 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class Transacao(
-  val id: Long?,
-  val usuarioId: Long,
-  val ativoId: Long?,
-  val acao: TransacaoAcao,
-  val tipo: TransacaoTipo,
-  val quantidade: Int,
-  val valorUnitario: Long,
-  val dataTransacao: LocalDate,
-  val createdAt: LocalDateTime?
+    val id: Long?,
+    val usuarioId: Long,
+    val ativoId: Long?,
+    val acao: TransacaoAcao,
+    val tipo: TransacaoTipo,
+    val quantidade: Int,
+    val valorUnitario: Long,
+    val dataTransacao: LocalDate,
+    val createdAt: LocalDateTime?,
+    val idempotenceKey: String
 )
-

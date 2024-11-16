@@ -9,10 +9,10 @@ import jakarta.validation.constraints.NotNull
 import java.time.LocalDate
 
 data class CadastrarRendaFixaRequest(
-  @field:NotNull @field:Valid val transacao: TransacaoRequest,
-  @field:NotBlank val emissor: String,
-  @field:NotNull val tipo: RendaFixaTipo,
-  @field:NotNull val indexador: RendaFixaIndexador,
-  @field:NotNull @field:Min(1) val taxaAa: Long,
-  @field:NotNull val dataVencimento: LocalDate
+    @field:NotNull @field:Valid val transacao: TransacaoRequest,
+    @field:NotBlank val emissor: String,
+    @field:NotNull val tipo: RendaFixaTipo,
+    @field:NotNull val indexador: RendaFixaIndexador,
+    @field:NotNull @field:Min(1) val taxaAa: Long,
+    @field:NotNull val dataVencimento: LocalDate
 )

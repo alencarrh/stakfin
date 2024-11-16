@@ -14,7 +14,7 @@ create table usuario
 
 CREATE TABLE ticker
 (
-    ticker            VARCHAR(10) PRIMARY KEY,
+    id                VARCHAR(10) PRIMARY KEY,
     nome              VARCHAR(100),
     setor             VARCHAR(50),
     segmento          VARCHAR(50),
@@ -29,20 +29,21 @@ CREATE TABLE ticker_history
     data   DATE,
     valor  bigint,
     PRIMARY KEY (ticker, data),
-    FOREIGN KEY (ticker) REFERENCES ticker (ticker)
+    FOREIGN KEY (ticker) REFERENCES ticker (id)
 );
 
 CREATE TABLE transacao
 (
-    id             bigserial PRIMARY KEY,
-    usuario_id     bigint,
-    ativo_id       INT,
-    acao           varchar(50),
-    tipo           varchar(50),
-    quantidade     INT,
-    valor_unitario bigint,
-    data_transacao DATE,
-    created_at     TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    id              bigserial PRIMARY KEY,
+    usuario_id      bigint,
+    ativo_id        bigint,
+    acao            varchar(50),
+    tipo            varchar(50),
+    quantidade      INT,
+    valor_unitario  bigint,
+    data_transacao  DATE,
+    idempotence_key varchar(255) UNIQUE,
+    created_at      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuario (id)
 );
 
@@ -62,6 +63,7 @@ CREATE TABLE ativo_rendafixa
     valor_compra           bigint,
     quantidade_total_venda INT,
     valor_total_venda      bigint,
+    idempotence_key        varchar(255) UNIQUE,
     created_at             TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuario (id)
 );
@@ -71,8 +73,6 @@ CREATE TABLE ativo_rendavariavel
     id                      bigserial PRIMARY KEY,
     usuario_id              bigint,
     ticker                  VARCHAR(10),
-    data_compra             DATE,
-    data_venda              DATE,
     taxa_total_compra       bigint,
     taxa_total_venda        bigint,
     status                  varchar(50),
@@ -81,8 +81,9 @@ CREATE TABLE ativo_rendavariavel
     valor_total_compra      bigint,
     valor_total_venda       bigint,
     pm                      bigint,
+    idempotence_key         varchar(255) UNIQUE,
     created_at              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ticker) REFERENCES ticker (ticker),
+    FOREIGN KEY (ticker) REFERENCES ticker (id),
     FOREIGN KEY (usuario_id) REFERENCES usuario (id)
 );
 

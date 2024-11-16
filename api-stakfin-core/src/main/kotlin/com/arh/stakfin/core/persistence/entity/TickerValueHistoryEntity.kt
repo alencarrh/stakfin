@@ -7,9 +7,4 @@ import java.time.LocalDate
 
 @Entity
 @Table(name = "ticker_history")
-data class TickerValueHistoryEntity(
-    @Id
-    val ticker: String,
-    val data: LocalDate,
-    val valor: Long
-)
+data class TickerValueHistoryEntity(@Id val ticker: String, val data: LocalDate, val valor: Long)
